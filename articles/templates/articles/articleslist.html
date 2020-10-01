@@ -1,23 +1,16 @@
-{% load static %}
+{%extends 'base.html'  %}
+{%block title%}
+articles
+{%endblock%}
 
-<!DOCTYPE html>
+ {%block content%}
 
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>article</title>
-    <link rel="stylesheet" href="{%static 'styles.css' %}">
-  </head>
-  <body>
 <div class="container">
   <h1>articleslist</h1>
   {% for article in articles%}
-  <h2>
-  <a href="#">{{article.title}}</a></h2>
+  <h2><a href="{%url 'articles:detail' slug=article.slug %}">{{article.title}}</a></h2>
   <p>{{article.snippet}}</p>
   <p>{{article.date}}</p>
   {% endfor %}
-
 </div>
-  </body>
-</html>
+{%endblock%}
